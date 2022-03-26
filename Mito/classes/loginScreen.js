@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-export default function loginScreen() {
+export default function LoginScreen() {
   return (
     <View style={styles.container}>
       <Button style = {styles.Button}>School</Button>
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   Button : {
-    position: absolute,
+    position: 'absolute',
     left: '0%',
     right: '0%',
     top: '0%',
