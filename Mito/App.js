@@ -12,6 +12,17 @@ export default function App() {
   );
 }
 
+
+// import { NativeBaseProvider, Box } from "native-base";
+
+// export default function App() {
+//   return (
+//     <NativeBaseProvider>
+//       <Box>Hello world</Box>
+//     </NativeBaseProvider>
+//   );
+// }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
