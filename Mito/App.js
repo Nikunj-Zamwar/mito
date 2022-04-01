@@ -1,14 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import LoginScreen from './classes/LoginScreen';
+//import Checkbox from './classes/CheckboxClass';
+import { NativeBaseProvider, Link, Box } from "native-base"
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-      <LoginScreen />
-    </View>
+    <NativeBaseProvider>
+        <View style={styles.container}>
+          <Text>Open up App.js to start working on your app!</Text>
+          <StatusBar style="auto" />
+          <Link onPress={classes/CheckboxClass} mt = '8'>
+            <Box px="3" py="2" bg="primary.400" rounded="sm" _text={{
+                color: "white",
+                fontWeight: "medium"
+              }}>
+              Press to go to your to do list
+            </Box>
+          </Link>
+        </View>
+    </NativeBaseProvider>
   );
 }
 
@@ -28,6 +38,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'left',
   },
 });
