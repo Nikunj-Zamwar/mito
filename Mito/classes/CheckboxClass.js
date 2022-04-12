@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider, Checkbox, Link, View } from "native-base"
-
+import {NavigationContainer} from "@react-navigation/native";
+import {StyleSheet} from "react-native";
 
 export default function CheckboxClass(){
   return (
-    <NativeBaseProvider>
       <View style={styles.container}>
         <Text>This is you to do list</Text>
         <Checkbox value="two">working</Checkbox>
       </View>
-    </NativeBaseProvider>
   );
 }
 
