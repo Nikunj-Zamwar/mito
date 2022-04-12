@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider, Checkbox, Link, View } from "native-base"
 import {NavigationContainer} from "@react-navigation/native";
-import {StyleSheet} from "react-native";
+import {StyleSheet, Text} from "react-native";
 
 export default function CheckboxClass(){
   return (
