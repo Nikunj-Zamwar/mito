@@ -1,19 +1,20 @@
 import React from 'react';
-import {Container, VStack} from "native-base"
+import {View, Box, Container, VStack} from "native-base"
 import {StyleSheet} from "react-native";
+import CheckboxClass from "./CheckboxClass.js";
 
 export default function HomeScreen(props){
     return(
+        <View>
         <VStack space={4} alignItems="center">
             {/*Checklist for Active Meeting*/}
-            <Container>
-
-            </Container>
+            <Box bg="#ffffff">
+                <CheckboxClass></CheckboxClass>
+            </Box>
             {/*Agenda for Active Meeting*/}
-            <Container>
 
-            </Container>
         </VStack>
+        </View>
     );
 }
 
