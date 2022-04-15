@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Box, Container, VStack} from "native-base"
 import {StyleSheet} from "react-native";
-import CheckboxClass from "./CheckboxClass.js";
+import {CheckBoxTest} from "./testListDisplay";
 
 export default function HomeScreen(props){
     return(
@@ -9,7 +9,7 @@ export default function HomeScreen(props){
         <VStack space={4} alignItems="center">
             {/*Checklist for Active Meeting*/}
             <Box bg="#ffffff">
-                <CheckboxClass></CheckboxClass>
+                <CheckBoxTest></CheckBoxTest>
             </Box>
             {/*Agenda for Active Meeting*/}
 
