@@ -1,15 +1,13 @@
 import React from 'react';
-import {View, Box, Container, VStack} from "native-base"
-import {StyleSheet} from "react-native";
-import {CheckBoxTest} from "./testListDisplay";
+import {View, Box, VStack, Text} from "native-base"
 
 export default function HomeScreen(props){
     return(
         <View>
         <VStack space={4} alignItems="center">
-            {/*Checklist for Active Meeting*/}
-            <Box bg="#ffffff">
-                <CheckBoxTest></CheckBoxTest>
+            <Box width="80%" borderRadius="md" borderWidth="2px" borderColor="#A3C1AD" bg="#C4DF9D">
+                <Text pl="15px" pt= "10px" color="#787874" textAlign="left" fontSize="13" fontFamily="Inter:wght@500">work</Text>
+                <Text pl="15px" pt= "5px" color="#656363" textAlign="left" fontSize="20" fontFamily="Baloo+Bhaijaan+2:wght@600">work</Text>
             </Box>
             {/*Agenda for Active Meeting*/}
 
@@ -17,12 +15,3 @@ export default function HomeScreen(props){
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'left',
-    },
-});

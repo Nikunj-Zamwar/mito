@@ -1,4 +1,3 @@
-import CheckboxClass from './classes/CheckboxClass.js';
 import HomeScreen from './classes/homeScreen.js';
 import { NativeBaseProvider} from "native-base"
 import {createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -12,7 +11,7 @@ export default function App() {
     <NativeBaseProvider>
       <MainStack.Navigator>
         <MainStack.Screen name = "Home" component = {HomeScreen} />
-        <MainStack.Screen name = "Checkbox Class" component = {CheckboxClass} />
+        {/*<MainStack.Screen name = "Checkbox Class" component = {CheckboxClass} />*/}
       </MainStack.Navigator>
     </NativeBaseProvider>
       </NavigationContainer>
