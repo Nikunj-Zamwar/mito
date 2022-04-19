@@ -4,6 +4,7 @@ import CheckboxClass from './classes/CheckboxClass.js';
 import { NativeBaseProvider, Link, Box } from "native-base"
 import {createNativeStackNavigator } from '@react-navigation/native-stack';
 import {NavigationContainer} from "@react-navigation/native";
+import { registerRootComponent } from 'expo';
 
 const MainStack = createNativeStackNavigator();
 export default function App(props) {
@@ -18,6 +19,8 @@ export default function App(props) {
       </NavigationContainer>
   );
 }
+
+registerRootComponent(App); 
 
 function HomeScreen(props){
   return(
@@ -41,6 +44,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'left',
+    justifyContent: 'center',
   },
 });
