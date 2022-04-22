@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Box, VStack, Text} from "native-base"
+import {View, Box, VStack, Text, Flex, Center, HStack} from "native-base"
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
-import {CheckBoxTest} from "./testListDisplay";
+
 export default function HomeScreen(){
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
     if(!fontsLoaded){
@@ -21,6 +21,7 @@ export default function HomeScreen(){
                 <Title color = "#FFFFFF" text = "work"/>
                 <Header size = "18px" color = "#FFFFFF" text = "meeting agenda"/>
             </Card>
+
         </VStack>
         </View>
     );
@@ -32,8 +33,16 @@ function Card(props){
             <Box pl="15px" bg = {props.color} borderBottomColor = {props.dividerColor} borderBottomWidth = "1px">
         {props.children}
             </Box>
-            <CheckBoxTest />
-        </Box>);
+            <Flex pl = "15px" pt ="15px" pb = "10px">
+                <HStack space = {3}>
+                <Center size={6} rounded="xl" borderColor = "#94BDB8" borderWidth="1.5px">
+                    <Text fontFamily="Inter_400Regular" color ="#787874">1</Text>
+                </Center>
+                <Text fontFamily="Inter_400Regular" color = "#888885">Stand Up</Text>
+                </HStack>
+            </Flex>
+        </Box>
+    );
 }
 function Title(props) {
     return (<Text pt= "10px" color={props.color} fontSize="13" fontFamily="Inter_400Regular" letterSpacing=".18em">{props.text}</Text>);
