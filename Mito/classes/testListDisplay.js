@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { NativeBaseProvider, Checkbox, Link, View } from "native-base"
-import {NavigationContainer} from "@react-navigation/native";
-import {StyleSheet, Text} from "react-native";
+import React from 'react';
+import {Checkbox, View } from "native-base"
 
 export function CheckBoxTest(){
   return (
-      <View style={styles.container}>
+      <View>
           <Checkbox value="two">Explain the current dilemmas</Checkbox>
           <Checkbox value="two">Show current set up update</Checkbox>
           <Checkbox value="two">Github setup invites</Checkbox>
@@ -15,12 +12,3 @@ export function CheckBoxTest(){
       </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#coolGray.600',
-    alignItems: 'left',
-    justifyContent: 'left',
-  },
-});
