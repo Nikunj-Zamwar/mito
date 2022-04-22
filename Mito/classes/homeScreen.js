@@ -1,10 +1,13 @@
 import React from 'react';
 import {View, Box, VStack, Text} from "native-base"
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
+import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_700Bold} from '@expo-google-fonts/baloo-bhaijaan-2';
 export default function HomeScreen(props){
-    useFonts({Inter_400Regular, BalooBhaijaan2_700Bold});
-
+    let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_700Bold});
+    if(!fontsLoaded){
+        return <AppLoading />
+    }
     return(
         <View>
         <VStack space={4} alignItems="center">
