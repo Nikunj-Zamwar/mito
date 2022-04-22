@@ -10,14 +10,25 @@ export default function HomeScreen(props){
     }
     return(
         <View>
-        <VStack space={4} alignItems="center">
-            <Box width="80%" borderRadius="md" borderWidth="2px" borderColor="#A3C1AD" bg="#C4DF9D">
-                <Text pl="15px" pt= "10px" color="#787874" textAlign="left" fontSize="13" fontFamily="Inter_400Regular">work</Text>
-                <Text pl="15px" pt= "5px" color="#656363" textAlign="left" fontSize="20" fontFamily="BalooBhaijaan2_700Bold">work</Text>
+        <VStack space={8} alignItems="center">
+            <Box pl="15px" width="80%" borderRadius="md" borderWidth="2px" borderColor="#A3C1AD" bg="#C4DF9D">
+                <Title text = "work"/>
+                <Header text="stand up update"/>
             </Box>
             {/*Agenda for Active Meeting*/}
-
+            <Box pl="15px" width="80%" borderRadius="md" borderWidth="2px" borderColor="#A3C1AD" bg="#C4DF9D">
+                <Title text = "work"/>
+                <Header text="meeting agenda"/>
+            </Box>
         </VStack>
         </View>
     );
+}
+
+function Title(props) {
+    return (<Text pt= "10px" color="#787874" fontSize="13" fontFamily="Inter_400Regular" letterSpacing=".18em">{props.text}</Text>);
+}
+
+function Header(props) {
+    return (<Text pt= "5px" color="#656363" fontSize="20" fontFamily="BalooBhaijaan2_700Bold">{props.text}</Text>);
 }
