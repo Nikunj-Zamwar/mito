@@ -2,33 +2,40 @@ import React from 'react';
 import {View, Box, VStack, Text} from "native-base"
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
-import {BalooBhaijaan2_700Bold} from '@expo-google-fonts/baloo-bhaijaan-2';
-export default function HomeScreen(props){
-    let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_700Bold});
+import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
+export default function HomeScreen(){
+    let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
     if(!fontsLoaded){
         return <AppLoading />
     }
     return(
         <View>
+
         <VStack space={8} alignItems="center">
-            <Box pl="15px" width="80%" borderRadius="md" borderWidth="2px" borderColor="#A3C1AD" bg="#C4DF9D">
-                <Title text = "work"/>
-                <Header text="stand up update"/>
-            </Box>
+            <Card color="#C4DF9D" borderColor = "#A3C1AD">
+                <Title color = "#787874" text = "work"/>
+                <Header size = "20px" color = "#656363" text = "stand up update"/>
+            </Card>
             {/*Agenda for Active Meeting*/}
-            <Box pl="15px" width="80%" borderRadius="md" borderWidth="2px" borderColor="#A3C1AD" bg="#C4DF9D">
-                <Title text = "work"/>
-                <Header text="meeting agenda"/>
-            </Box>
+            <Card color="#94BDB8" borderColor = "#94BDB8">
+                <Title color = "#FFFFFF" text = "work"/>
+                <Header size = "18px" color = "#FFFFFF" text = "meeting agenda"/>
+            </Card>
         </VStack>
         </View>
     );
 }
 
+function Card(props){
+    return (
+        <Box pl="15px" width="80%" borderRadius="md" borderWidth="2px" borderColor={props.borderColor} bg={props.color}>
+        {props.children}
+        </Box>);
+}
 function Title(props) {
-    return (<Text pt= "10px" color="#787874" fontSize="13" fontFamily="Inter_400Regular" letterSpacing=".18em">{props.text}</Text>);
+    return (<Text pt= "10px" color={props.color} fontSize="13" fontFamily="Inter_400Regular" letterSpacing=".18em">{props.text}</Text>);
 }
 
 function Header(props) {
-    return (<Text pt= "5px" color="#656363" fontSize="20" fontFamily="BalooBhaijaan2_700Bold">{props.text}</Text>);
+    return (<Text pt= "5px" color={props.color} fontSize={props.size} fontFamily="BalooBhaijaan2_600SemiBold">{props.text}</Text>);
 }
