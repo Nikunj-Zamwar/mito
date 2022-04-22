@@ -10,10 +10,9 @@ export default function HomeScreen(){
         return <AppLoading />
     }
     return(
-        <View>
-
+        <View pt = "50px">
         <VStack space={8} alignItems="center">
-            <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#A2A1A1">
+            <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD">
                 <Title color = "#787874" text = "work"/>
                 <Header size = "20px" color = "#656363" text = "stand up update"/>
             </Card>
