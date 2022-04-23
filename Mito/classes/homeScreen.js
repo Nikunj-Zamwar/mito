@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Box, VStack, Text, Flex, Circle, HStack} from "native-base"
+import {View, Box, VStack, Text, Flex, Center, HStack} from "native-base"
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
+import {CheckBoxTest} from "./testListDisplay";
 
 export default function HomeScreen(){
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
@@ -12,12 +13,12 @@ export default function HomeScreen(){
     return(
         <View pt = "50px">
         <VStack space={8} alignItems="center">
-            <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD">
+            <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD" type="checklist">
                 <Title color = "#787874" text = "work"/>
                 <Header size = "20px" color = "#656363" text = "stand up update"/>
             </Card>
             {/*Agenda for Active Meeting*/}
-            <Card color="#94BDB8" borderColor = "#94BDB8" dividerColor = "#C4C9BD">
+            <Card color="#94BDB8" borderColor = "#94BDB8" dividerColor = "#C4C9BD" type="agenda">
                 <Title color = "#FFFFFF" text = "work"/>
                 <Header size = "18px" color = "#FFFFFF" text = "meeting agenda"/>
             </Card>
@@ -28,26 +29,38 @@ export default function HomeScreen(){
 }
 
 function Card(props){
+    let content;
+    if(props.type === "agenda"){
+        content = <Agenda />
+    }
+    else{
+        content = <CheckBoxTest />
+    }
     return (
         <Box width="80%" borderRadius="md" borderWidth="2px" borderColor={props.borderColor} bg="#FFFFFF">
             <Box pl="15px" bg = {props.color} borderBottomColor = {props.dividerColor} borderBottomWidth = "1px">
         {props.children}
             </Box>
-            <Flex pl = "15px" pt ="15px" pb = "10px">
-                <HStack space = {3}>
-                <Circle size="30px" borderColor = "#94BDB8" borderWidth="1.5px">
-                    <Text fontFamily= "Inter_400Regular" color ="#787874">1</Text>
-                </Circle>
-                <Text pt = "4px" color = "#888885" fontFamily= "Inter_400Regular">Stand Up</Text>
-                </HStack>
-            </Flex>
+            {content}
         </Box>
     );
 }
+
 function Title(props) {
     return (<Text pt= "10px" color={props.color} fontSize="13" fontFamily="Inter_400Regular" letterSpacing=".18em">{props.text}</Text>);
 }
 
 function Header(props) {
     return (<Text pt= "5px" color={props.color} fontSize={props.size} fontFamily="BalooBhaijaan2_600SemiBold">{props.text}</Text>);
+}
+
+function Agenda(){
+    return(<Flex pl = "15px" pt ="15px" pb = "10px">
+        <HStack space = {3}>
+            <Center size={6} rounded="xl" borderColor = "#94BDB8" borderWidth="1.5px">
+                <Text fontFamily="Inter_400Regular" color ="#787874">1</Text>
+            </Center>
+            <Text pt = "2px" fontFamily="Inter_400Regular" color = "#888885">Stand Up</Text>
+        </HStack>
+    </Flex>);
 }
