@@ -1,9 +1,8 @@
 import React from 'react';
-import {View, Box, VStack, Text, Flex, Center, HStack} from "native-base"
+import {View, Box, VStack, Text, Flex, Center} from "native-base"
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
-import {CheckBoxTest} from "./testListDisplay";
 
 export default function HomeScreen(){
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
@@ -34,7 +33,7 @@ function Card(props){
         content = <Agenda />
     }
     else{
-        content = <CheckBoxTest />
+        content = <MeetingCheckbox />
     }
     return (
         <Box width="80%" borderRadius="md" borderWidth="2px" borderColor={props.borderColor} bg="#FFFFFF">
@@ -54,12 +53,22 @@ function Header(props) {
     return (<Text pt= "5px" color={props.color} fontSize={props.size} fontFamily="BalooBhaijaan2_600SemiBold">{props.text}</Text>);
 }
 
+function MeetingCheckbox(){
+    const items = {
+        "explain the current dilemmas" : true,
+        "show current set up update": false,
+        "github setup invites": false,
+        "current blockers": false,
+        "missing meetings": false
+    }
+    return (<Text>test</Text>);
+}
 function Agenda(){
     //Get from database
     const items = ["stand up (5 minutes)", "deliverables (20 minutes)", "new assignment (10 minutes)", "q&a (5 minutes)"]
     //Make Agenda
     const listItems = items.map((item, index) =>
-        <Flex pl = "15px" pt ={index == 0 ? "20px" : "5px"} pb = "15px" direction="row">
+        <Flex pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
             <Center size={6} rounded="xl" borderColor = "#94BDB8" borderWidth="1.5px">
                 <Text fontFamily="Inter_400Regular" color ="#787874">{index + 1}</Text>
             </Center>
