@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Box, VStack, Text, Flex, Center, HStack} from "native-base"
+import {View, Box, VStack, Text, Flex, Circle, HStack} from "native-base"
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
@@ -35,10 +35,10 @@ function Card(props){
             </Box>
             <Flex pl = "15px" pt ="15px" pb = "10px">
                 <HStack space = {3}>
-                <Center size={6} rounded="xl" borderColor = "#94BDB8" borderWidth="1.5px">
-                    <Text fontFamily="Inter_400Regular" color ="#787874">1</Text>
-                </Center>
-                <Text fontFamily="Inter_400Regular" color = "#888885">Stand Up</Text>
+                <Circle size="30px" borderColor = "#94BDB8" borderWidth="1.5px">
+                    <Text fontFamily= "Inter_400Regular" color ="#787874">1</Text>
+                </Circle>
+                <Text pt = "4px" color = "#888885" fontFamily= "Inter_400Regular">Stand Up</Text>
                 </HStack>
             </Flex>
         </Box>
