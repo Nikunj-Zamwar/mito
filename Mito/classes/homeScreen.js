@@ -38,8 +38,8 @@ function Card(props){
     }
     return (
         <Box width="80%" borderRadius="md" borderWidth="2px" borderColor={props.borderColor} bg="#FFFFFF">
-            <Box pl="15px" bg = {props.color} borderBottomColor = {props.dividerColor} borderBottomWidth = "1px">
-        {props.children}
+            <Box pl="15px" pb = "5px" bg = {props.color} borderBottomColor = {props.dividerColor} borderBottomWidth = "1px">
+                {props.children}
             </Box>
             {content}
         </Box>
@@ -55,12 +55,16 @@ function Header(props) {
 }
 
 function Agenda(){
-    return(<Flex pl = "15px" pt ="15px" pb = "10px">
-        <HStack space = {3}>
+    //Get from database
+    const items = ["stand up (5 minutes)", "deliverables (20 minutes)", "new assignment (10 minutes)", "q&a (5 minutes)"]
+    //Make Agenda
+    const listItems = items.map((item, index) =>
+        <Flex pl = "15px" pt ={index == 0 ? "20px" : "5px"} pb = "15px" direction="row">
             <Center size={6} rounded="xl" borderColor = "#94BDB8" borderWidth="1.5px">
-                <Text fontFamily="Inter_400Regular" color ="#787874">1</Text>
+                <Text fontFamily="Inter_400Regular" color ="#787874">{index + 1}</Text>
             </Center>
-            <Text pt = "2px" fontFamily="Inter_400Regular" color = "#888885">Stand Up</Text>
-        </HStack>
-    </Flex>);
+            <Text pl="10px" fontFamily="Inter_400Regular" color = "#888885">{item}</Text>
+        </Flex>
+    );
+    return(listItems);
 }
