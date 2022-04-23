@@ -4,6 +4,7 @@ import {Feather} from '@expo/vector-icons'
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function HomeScreen(){
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
@@ -16,11 +17,13 @@ export default function HomeScreen(){
             <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD" type="checklist">
                 <Title color = "#787874" text = "work"/>
                 <Header size = "20px" color = "#656363" text = "stand up update"/>
+                <Icon as ={MaterialCommunityIcons} name="clipboard-text-outline" size={21} color = "#787874"/>
             </Card>
             {/*Agenda for Active Meeting*/}
             <Card color="#94BDB8" borderColor = "#94BDB8" dividerColor = "#C4C9BD" type="agenda">
                 <Title color = "#FFFFFF" text = "work"/>
                 <Header size = "18px" color = "#FFFFFF" text = "meeting agenda"/>
+                <Icon as ={MaterialCommunityIcons} name="clipboard-text-outline" size={21} color = "#FFFFFF"/>
             </Card>
 
         </VStack>
@@ -51,7 +54,7 @@ function Title(props) {
 }
 
 function Header(props) {
-    return (<Text pt= "5px" color={props.color} fontSize={props.size} fontFamily="BalooBhaijaan2_600SemiBold">{props.text}</Text>);
+    return (<Text pt= "5px" pb = "10px" color={props.color} fontSize={props.size} fontFamily="BalooBhaijaan2_600SemiBold">{props.text}</Text>);
 }
 
 function MeetingCheckbox(){
