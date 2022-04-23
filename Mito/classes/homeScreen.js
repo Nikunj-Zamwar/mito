@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Box, VStack, Text, Flex, Center} from "native-base"
+import {View, Box, VStack, Text, Flex, Center, Circle, Icon} from "native-base"
+import {Feather} from '@expo/vector-icons'
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
@@ -58,10 +59,19 @@ function MeetingCheckbox(){
         "explain the current dilemmas" : true,
         "show current set up update": false,
         "github setup invites": false,
-        "current blockers": false,
+        "current blockers": true,
         "missing meetings": false
     }
-    return (<Text>test</Text>);
+    //Make Checklist
+    const listItems = Object.keys(items).map((item, index) =>
+        <Flex pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
+            <Center size={6} borderColor = "#C8D2B0" borderWidth="1px" borderRadius = "2px">
+               <Icon as={Feather} name="check" color = {items[item] ? "#888885" : "#FFFFFF"}/>
+            </Center>
+            <Text pl="10px" fontFamily="Inter_400Regular" color = "#888885">{item}</Text>
+        </Flex>
+    );
+    return(listItems);
 }
 function Agenda(){
     //Get from database
@@ -69,9 +79,9 @@ function Agenda(){
     //Make Agenda
     const listItems = items.map((item, index) =>
         <Flex pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
-            <Center size={6} rounded="xl" borderColor = "#94BDB8" borderWidth="1.5px">
+            <Circle size={6} rounded="xl" borderColor = "#94BDB8" borderWidth="1.5px">
                 <Text fontFamily="Inter_400Regular" color ="#787874">{index + 1}</Text>
-            </Center>
+            </Circle>
             <Text pl="10px" fontFamily="Inter_400Regular" color = "#888885">{item}</Text>
         </Flex>
     );
