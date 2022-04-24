@@ -6,29 +6,11 @@ import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {ScrollView} from 'react-native';
-
 import {collection, getDocs} from 'firebase/firestore'
 import {db} from "../firebase.js";
 import {useState, useEffect} from 'react';
 
-export default function HomeScreen(props){
-    //Firestore Calls
-    const checklistRef = collection(db, "premadeChecklists");
-    const [listItems, setListItems] = useState();
-    useEffect(() => {
-        const getListItems = async () => {
-            const checkListSnap = await getDocs(checklistRef);
-            //Probably inefficent
-            checkListSnap.forEach((doc) => {
-                if(doc.id === "SR6jxAjN9lXC38mSazAJ"){
-                    setListItems(doc.data());
-                }
-            });
-        }
-
-        getListItems().then();
-    }, []);
-
+export default function HomeScreen(){
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
     if(!fontsLoaded){
         return <AppLoading />
@@ -38,7 +20,7 @@ export default function HomeScreen(props){
         <ScrollView>
         <View pt = "50px">
         <VStack space={8} alignItems="center">
-            <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD" type="checklist" data = {listItems}>
+            <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD" type="checklist">
                 <Title color = "#787874" text = "work"/>
                 <Header size = "20px" color = "#656363" text = "stand up update"/>
                 <Icon as ={MaterialCommunityIcons} name="clipboard-text-outline" size={21} color = "#787874"/>
@@ -61,7 +43,7 @@ function Card(props){
         content = <Agenda />
     }
     else{
-        content = <MeetingCheckbox items = {props.data}/>
+        content = <MeetingCheckbox/>
     }
     return (
         <Box width="80%" borderRadius="md" borderWidth="2px" borderColor={props.borderColor} bg="#FFFFFF">
@@ -81,32 +63,40 @@ function Header(props) {
     return (<Text pt= "5px" pb = "10px" color={props.color} fontSize={props.size} fontFamily="BalooBhaijaan2_600SemiBold">{props.text}</Text>);
 }
 
-function MeetingCheckbox(props){
-    /*
-    const items = {
-        "explain the current dilemmas" : true,
-        "show current set up update": false,
-        "github setup invites": false,
-        "current blockers": true,
-        "missing meetings": false
-    }
-     */
-    const data = props.data;
+function MeetingCheckbox(){
+    let id = '0';
+
+    const [data, setData] = useState();
+    //Firestore
+    useEffect(() => {
+        const getListItems = async () => {
+            const checklistRef = collection(db, "premadeChecklists");
+            const checkListSnap = await getDocs(checklistRef);
+            //Probably inefficent
+            checkListSnap.forEach((doc) => {
+                if(doc.id === id){
+                    setData(doc.data());
+                }
+            });
+        }
+        getListItems().then();
+    }, [id]);
+
     //Make Checklist
     //TODO: Give elements unique ids
-
-    if(props.data){
-        const listItems = Object.keys(data).map((item, index) =>
+    if(data){
+        const list = Object.keys(data.items).map((item, index) =>
             <Flex pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
                 <Center size={6} borderColor = "#C8D2B0" borderWidth="1px" borderRadius = "2px">
-                   <Icon as={Feather} name="check" color = {data[item] ? "#888885" : "#FFFFFF"}/>
+                   <Icon as={Feather} name="check" color = {data.items[item] ? "#888885" : "#FFFFFF"}/>
                 </Center>
                 <Text pl="10px" fontFamily="Inter_400Regular" color = "#888885">{item}</Text>
             </Flex>
         );
-        return(listItems);
+        return(list);
     }
     else{
+        id = 'SR6jxAjN9lXC38mSazAJ';
         return (<AppLoading />);
     }
 }
