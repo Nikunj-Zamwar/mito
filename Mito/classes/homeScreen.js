@@ -7,20 +7,38 @@ import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {ScrollView} from 'react-native';
 
-import {collection} from 'firebase/firestore'
+import {collection, getDocs} from 'firebase/firestore'
 import {db} from "../firebase.js";
-const checklistRef = collection(db, "premadeChecklists");
+import {useState, useEffect} from 'react';
 
-export default function HomeScreen(){
+export default function HomeScreen(props){
+    //Firestore Calls
+    const checklistRef = collection(db, "premadeChecklists");
+    const [listItems, setListItems] = useState();
+    useEffect(() => {
+        const getListItems = async () => {
+            const checkListSnap = await getDocs(checklistRef);
+            //Probably inefficent
+            checkListSnap.forEach((doc) => {
+                if(doc.id === "SR6jxAjN9lXC38mSazAJ"){
+                    setListItems(doc.data());
+                }
+            });
+        }
+
+        getListItems().then();
+    });
+
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
     if(!fontsLoaded){
         return <AppLoading />
     }
+
     return(
         <ScrollView>
         <View pt = "50px">
         <VStack space={8} alignItems="center">
-            <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD" type="checklist">
+            <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD" type="checklist" items = {listItems}>
                 <Title color = "#787874" text = "work"/>
                 <Header size = "20px" color = "#656363" text = "stand up update"/>
                 <Icon as ={MaterialCommunityIcons} name="clipboard-text-outline" size={21} color = "#787874"/>
@@ -43,7 +61,7 @@ function Card(props){
         content = <Agenda />
     }
     else{
-        content = <MeetingCheckbox />
+        content = <MeetingCheckbox items = {props.items}/>
     }
     return (
         <Box width="80%" borderRadius="md" borderWidth="2px" borderColor={props.borderColor} bg="#FFFFFF">
@@ -63,9 +81,8 @@ function Header(props) {
     return (<Text pt= "5px" pb = "10px" color={props.color} fontSize={props.size} fontFamily="BalooBhaijaan2_600SemiBold">{props.text}</Text>);
 }
 
-async function MeetingCheckbox(){
-    const checkListSnap = await checklistRef.where('id', '==', 'SR6jxAjN9lXC38mSazAJ').get();
-    console.log(checkListSnap[0]);
+function MeetingCheckbox(props){
+    /*
     const items = {
         "explain the current dilemmas" : true,
         "show current set up update": false,
@@ -73,6 +90,10 @@ async function MeetingCheckbox(){
         "current blockers": true,
         "missing meetings": false
     }
+    */
+    const items = props.items;
+    //const test = listItems.items;
+    //console.log(test);
     //Make Checklist
     //TODO: Give elements unique ids
     const listItems = Object.keys(items).map((item, index) =>
