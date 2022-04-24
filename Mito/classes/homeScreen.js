@@ -27,7 +27,7 @@ export default function HomeScreen(props){
         }
 
         getListItems().then();
-    });
+    }, []);
 
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
     if(!fontsLoaded){
@@ -38,7 +38,7 @@ export default function HomeScreen(props){
         <ScrollView>
         <View pt = "50px">
         <VStack space={8} alignItems="center">
-            <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD" type="checklist" items = {listItems}>
+            <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD" type="checklist" data = {listItems}>
                 <Title color = "#787874" text = "work"/>
                 <Header size = "20px" color = "#656363" text = "stand up update"/>
                 <Icon as ={MaterialCommunityIcons} name="clipboard-text-outline" size={21} color = "#787874"/>
@@ -61,7 +61,7 @@ function Card(props){
         content = <Agenda />
     }
     else{
-        content = <MeetingCheckbox items = {props.items}/>
+        content = <MeetingCheckbox items = {props.data}/>
     }
     return (
         <Box width="80%" borderRadius="md" borderWidth="2px" borderColor={props.borderColor} bg="#FFFFFF">
@@ -90,21 +90,25 @@ function MeetingCheckbox(props){
         "current blockers": true,
         "missing meetings": false
     }
-    */
-    const items = props.items;
-    //const test = listItems.items;
-    //console.log(test);
+     */
+    const data = props.data;
     //Make Checklist
     //TODO: Give elements unique ids
-    const listItems = Object.keys(items).map((item, index) =>
-        <Flex pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
-            <Center size={6} borderColor = "#C8D2B0" borderWidth="1px" borderRadius = "2px">
-               <Icon as={Feather} name="check" color = {items[item] ? "#888885" : "#FFFFFF"}/>
-            </Center>
-            <Text pl="10px" fontFamily="Inter_400Regular" color = "#888885">{item}</Text>
-        </Flex>
-    );
-    return(listItems);
+
+    if(props.data){
+        const listItems = Object.keys(data).map((item, index) =>
+            <Flex pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
+                <Center size={6} borderColor = "#C8D2B0" borderWidth="1px" borderRadius = "2px">
+                   <Icon as={Feather} name="check" color = {data[item] ? "#888885" : "#FFFFFF"}/>
+                </Center>
+                <Text pl="10px" fontFamily="Inter_400Regular" color = "#888885">{item}</Text>
+            </Flex>
+        );
+        return(listItems);
+    }
+    else{
+        return (<AppLoading />);
+    }
 }
 function Agenda(){
     //Get from database
