@@ -8,6 +8,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {ScrollView} from 'react-native';
 
 import {collection} from 'firebase/firestore'
+import {db} from "../firebase.js";
+const checklistRef = collection(db, "premadeChecklists");
 
 export default function HomeScreen(){
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
@@ -61,7 +63,9 @@ function Header(props) {
     return (<Text pt= "5px" pb = "10px" color={props.color} fontSize={props.size} fontFamily="BalooBhaijaan2_600SemiBold">{props.text}</Text>);
 }
 
-function MeetingCheckbox(){
+async function MeetingCheckbox(){
+    const checkListSnap = await checklistRef.where('id', '==', 'SR6jxAjN9lXC38mSazAJ').get();
+    console.log(checkListSnap[0]);
     const items = {
         "explain the current dilemmas" : true,
         "show current set up update": false,
