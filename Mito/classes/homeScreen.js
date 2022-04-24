@@ -7,6 +7,8 @@ import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {ScrollView} from 'react-native';
 
+import {collection} from 'firebase/firestore'
+
 export default function HomeScreen(){
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
     if(!fontsLoaded){
@@ -68,6 +70,7 @@ function MeetingCheckbox(){
         "missing meetings": false
     }
     //Make Checklist
+    //TODO: Give elements unique ids
     const listItems = Object.keys(items).map((item, index) =>
         <Flex pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
             <Center size={6} borderColor = "#C8D2B0" borderWidth="1px" borderRadius = "2px">
@@ -82,6 +85,7 @@ function Agenda(){
     //Get from database
     const items = ["stand up (5 minutes)", "deliverables (20 minutes)", "new assignment (10 minutes)", "q&a (5 minutes)"]
     //Make Agenda
+    //TODO: Give elements unique ids
     const listItems = items.map((item, index) =>
         <Flex pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
             <Circle size={6} rounded="xl" borderColor = "#94BDB8" borderWidth="1.5px">
