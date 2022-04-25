@@ -4,18 +4,19 @@ import {createNativeStackNavigator } from '@react-navigation/native-stack';
 import {NavigationContainer} from "@react-navigation/native";
 const MainStack = createNativeStackNavigator();
 import {useFonts, BalooBhaijaan2_700Bold} from '@expo-google-fonts/baloo-bhaijaan-2';
+import {CheckBoxTest} from "./classes/testListDisplay";
 
 export default function App() {
   useFonts({BalooBhaijaan2_700Bold});
   return (
-      <NavigationContainer>
-    <NativeBaseProvider>
-      <MainStack.Navigator>
-        <MainStack.Screen name = "Home" component = {HomeScreen}/>
-        {/*<MainStack.Screen name = "Checkbox Class" component = {CheckboxClass} />*/}
-      </MainStack.Navigator>
-    </NativeBaseProvider>
-      </NavigationContainer>
+      <NativeBaseProvider>
+        <NavigationContainer>
+          <MainStack.Navigator initalRouteName = "CheckboxClass">
+            <MainStack.Screen name = "Home" component = {HomeScreen}/>
+            <MainStack.Screen name = "CheckboxClass" component = {CheckBoxTest} />
+          </MainStack.Navigator>
+        </NavigationContainer>
+      </NativeBaseProvider>
   );
 }
 
