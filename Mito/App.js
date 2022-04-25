@@ -11,7 +11,7 @@ export default function App() {
   return (
       <NativeBaseProvider>
         <NavigationContainer>
-          <MainStack.Navigator initalRouteName = "CheckboxClass">
+          <MainStack.Navigator initalRouteName = "HomeScreen">
             <MainStack.Screen name = "Home" component = {HomeScreen}/>
             <MainStack.Screen name = "CheckboxClass" component = {CheckBoxTest} />
           </MainStack.Navigator>
