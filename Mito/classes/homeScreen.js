@@ -1,13 +1,14 @@
 import React from 'react';
 import {View, Box, VStack, Text, Flex, Center, Circle, Icon} from "native-base"
-import {Feather} from '@expo/vector-icons'
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import {ScrollView} from 'react-native';
-import {collection, getDocs} from 'firebase/firestore'
+
+import {doc, onSnapshot} from 'firebase/firestore'
 import {db} from "../firebase.js";
+
 import {useState, useEffect} from 'react';
 
 export default function HomeScreen(){
@@ -64,29 +65,33 @@ function Header(props) {
 }
 
 function MeetingCheckbox(){
-    let id = '0';
+    let id = 'SR6jxAjN9lXC38mSazAJ';
 
     const [data, setData] = useState();
     //Firestore
     useEffect(() => {
+        /*
         const getListItems = async () => {
-            const checklistRef = collection(db, "premadeChecklists");
-            const checkListSnap = await getDocs(checklistRef);
-            //Probably inefficent
-            checkListSnap.forEach((doc) => {
-                if(doc.id === id){
-                    setData(doc.data());
-                }
-            });
+            const checklistRef = doc(db, "premadeChecklists", id);
+            const checkListSnap = await getDoc(checklistRef);
+            if(checkListSnap.exists()){
+                setData(checkListSnap.data());
+            }
         }
         getListItems().then();
-    }, [id]);
+         */
+        const unSub = onSnapshot(doc(db, "premadeChecklists", id), (doc) => {
+            setData(doc.data());
+        });
+        return () => {
+            unSub();
+        }
+    }, []);
 
     //Make Checklist
-    //TODO: Give elements unique ids
     if(data){
-        const list = Object.keys(data.items).map((item, index) =>
-            <Flex pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
+        const list = Object.keys(data.items).sort().map((item, index) =>
+            <Flex key = {item} pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
                 <Center size={6} borderColor = "#C8D2B0" borderWidth="1px" borderRadius = "2px">
                    <Icon as={Feather} name="check" color = {data.items[item] ? "#888885" : "#FFFFFF"}/>
                 </Center>
@@ -96,7 +101,6 @@ function MeetingCheckbox(){
         return(list);
     }
     else{
-        id = 'SR6jxAjN9lXC38mSazAJ';
         return (<AppLoading />);
     }
 }
@@ -104,9 +108,8 @@ function Agenda(){
     //Get from database
     const items = ["stand up (5 minutes)", "deliverables (20 minutes)", "new assignment (10 minutes)", "q&a (5 minutes)"]
     //Make Agenda
-    //TODO: Give elements unique ids
     const listItems = items.map((item, index) =>
-        <Flex pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
+        <Flex key = {item} pl = "15px" pt ={index === 0 ? "20px" : "5px"} pb = "15px" direction="row">
             <Circle size={6} rounded="xl" borderColor = "#94BDB8" borderWidth="1.5px">
                 <Text fontFamily="Inter_400Regular" color ="#787874">{index + 1}</Text>
             </Circle>
