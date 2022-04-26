@@ -70,16 +70,6 @@ function MeetingCheckbox(){
     const [data, setData] = useState();
     //Firestore
     useEffect(() => {
-        /*
-        const getListItems = async () => {
-            const checklistRef = doc(db, "premadeChecklists", id);
-            const checkListSnap = await getDoc(checklistRef);
-            if(checkListSnap.exists()){
-                setData(checkListSnap.data());
-            }
-        }
-        getListItems().then();
-         */
         const unSub = onSnapshot(doc(db, "premadeChecklists", id), (doc) => {
             setData(doc.data());
         });
