@@ -17,7 +17,9 @@ export default function App() {
       </NativeBaseProvider>
   ); */
     return (
-        <ProfileScreen />
+        <NativeBaseProvider>
+            <ProfileScreen />
+        </NativeBaseProvider>
     )
 }
 
