@@ -20,11 +20,14 @@ export default function ProfileScreen(){
     const windowHeight = Dimensions.get('window').height;
 
     return(
-        <View pt = "50px" alignItems = "center">
-            <Circle size ={windowWidth * 1.2} bottom = {windowHeight - 400} bg="#A0D6BB">
-                <VStack pt = {windowHeight / 4.5} alignItems = "center">
+        <View alignItems = "center">
+            <Circle size ={windowWidth * 1.2} bottom = {windowHeight - 450} bg="#A0D6BB">
+                <VStack pt = {windowHeight / 3.2} alignItems = "center">
                     <Text fontSize = "40px" fontFamily = "BalooBhaijaan2_600SemiBold" color = "white">ashley rivera</Text>
                     <Text fontSize = "32px" fontFamily = "BalooBhaijaan2_500Medium" color = "white">growth level: 2</Text>
+                    <Flex direction="row">
+                        <Text fontSize = "20px" fontFamily = "Inter_400Regular" color = "white">50 collected</Text>
+                    </Flex>
                 </VStack>
             </Circle>
         </View>
