@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Box, VStack, Text, Flex, Center, Circle, Icon} from "native-base"
+import {View, Box, VStack, Text, Flex, Image, Circle, Icon} from "native-base"
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold, BalooBhaijaan2_500Medium} from '@expo-google-fonts/baloo-bhaijaan-2';
@@ -7,8 +7,9 @@ import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import {ScrollView, Dimensions} from 'react-native';
 import {doc, onSnapshot} from 'firebase/firestore'
 import {db} from "../firebase.js";
-
 import {useState, useEffect} from 'react';
+
+const tempProfileImage = require("../assets/tempProfile.png");
 
 export default function ProfileScreen(){
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold, BalooBhaijaan2_500Medium});
@@ -20,6 +21,7 @@ export default function ProfileScreen(){
     const windowHeight = Dimensions.get('window').height;
 
     return(
+        <ScrollView>
         <View alignItems = "center">
             <Circle size ={windowWidth * 1.2} bottom = {windowHeight - 450} bg="#A0D6BB">
                 <VStack pt = {windowHeight / 3.2} alignItems = "center">
@@ -30,6 +32,8 @@ export default function ProfileScreen(){
                     </Flex>
                 </VStack>
             </Circle>
+            <Image source={tempProfileImage} alt ="Profile Picture"/>
         </View>
+        </ScrollView>
     );
 }
