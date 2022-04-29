@@ -32,7 +32,7 @@ export default function ProfileScreen(){
                     </Flex>
                 </VStack>
             </Circle>
-            <Image source={tempProfileImage} alt ="Profile Picture"/>
+            {/*<Image size = "xl" source={tempProfileImage} alt ="Profile Picture"/>*/}
         </View>
         </ScrollView>
     );
