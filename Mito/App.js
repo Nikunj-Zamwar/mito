@@ -1,18 +1,25 @@
-import HomeScreen from './classes/homeScreen.js';
-import { NativeBaseProvider} from "native-base"
-import {createNativeStackNavigator } from '@react-navigation/native-stack';
+import MainHomeScreen from './classes/homeScreen.js';
+import { NativeBaseProvider} from "native-base";
 import {NavigationContainer} from "@react-navigation/native";
-const MainStack = createNativeStackNavigator();
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+//import MainHomeScreen from './classes/homeScreen.js';
+//const MainStack = createNativeStackNavigator();
+
+const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
   return (
-      <NativeBaseProvider>
-        <NavigationContainer>
-          <MainStack.Navigator>
-            <MainStack.Screen name = "Home" component = {HomeScreen}/>
-          </MainStack.Navigator>
-        </NavigationContainer>
-      </NativeBaseProvider>
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <Tab.Navigator initialRouteName="Home" activeColor='#B9E276' inactiveColor='#94BDB8' barStyle = {{backgroundColor: '#FFFFFF'}}>
+          <Tab.Screen name="Home" component={MainHomeScreen} options={{
+                  tabBarIcon: ({ color }) => (
+                    <MaterialCommunityIcons name="home-variant" color={color} size={26} />
+                  ),
+                }}/>
+        </Tab.Navigator>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 }
-
