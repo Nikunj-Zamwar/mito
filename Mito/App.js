@@ -1,3 +1,4 @@
+import React from 'react';
 import HomeScreen from './classes/homeScreen.js';
 import ProfileScreen from './classes/profileScreen.js'
 import { NativeBaseProvider} from "native-base"

@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Box, VStack, Text, Flex, Center, Circle, Icon} from "native-base"
+import {Image} from 'react-native'
+import {View, VStack, Text, Flex, Circle} from "native-base"
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold, BalooBhaijaan2_500Medium} from '@expo-google-fonts/baloo-bhaijaan-2';
-import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import {ScrollView, Dimensions} from 'react-native';
 import {doc, onSnapshot} from 'firebase/firestore'
 import {db} from "../firebase.js";
@@ -20,6 +20,7 @@ export default function ProfileScreen(){
     const windowHeight = Dimensions.get('window').height;
 
     return(
+        <ScrollView>
         <View alignItems = "center">
             <Circle size ={windowWidth * 1.2} bottom = {windowHeight - 450} bg="#A0D6BB">
                 <VStack pt = {windowHeight / 3.2} alignItems = "center">
@@ -30,6 +31,8 @@ export default function ProfileScreen(){
                     </Flex>
                 </VStack>
             </Circle>
+            <Image source = {require('../assets/PlantGrowth1.png')}></Image>
         </View>
+        </ScrollView>
     );
 }
