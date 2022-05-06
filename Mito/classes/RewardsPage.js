@@ -42,8 +42,13 @@ function HomeScreen() {
 
 function SettingsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
+    <View style={styles.container}>
+      <Flex direction='column' alignSelf='flex-start' margin='3'>
+        <Heading style={styles.titlestyle}>Rewards Collected</Heading>
+        <Flex direction='row' flexWrap='wrap'>
+                <RewardCard itemName='$25 cvs gift card' price='2,000'/>
+        </Flex>
+      </Flex>
     </View>
   );
 }
@@ -83,7 +88,7 @@ function LeaderBoardCard(props) {
 
       <Circle bg='#FFFFFF' width='57' height='57' position='absolute' top='0' left='70'/>
 
-      <Text style={{fontSize:'20', color:'#888885', position:'absolute', left:'15pt'}}>{props.name}</Text>
+      <Text style={{fontSize:20, color:'#888885', position:'absolute', left:'47%'}}>{props.name}</Text>
       
       <Spacer/>
 
@@ -129,13 +134,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   titlestyle: {
     fontSize:30,
     fontStyle:'normal',
     fontWeight:'bold',
-    padding:10,
+    paddingTop:10,
+    paddingLeft:10,
     fontFamily:'BalooBhaijaan2_600SemiBold',
     alignSelf:'flex-start'
   },
