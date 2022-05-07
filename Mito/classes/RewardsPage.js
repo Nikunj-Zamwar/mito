@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { NativeBaseProvider, View, VStack, Button, Center, HStack, Stack, Box, Heading, Icon, Spacer, Flex, Circle} from 'native-base';
-// import {NavigationContainer} from "@react-navigation/native";
+import React  from 'react';
+import {View, VStack, HStack, Box, Heading, Icon, Spacer, Flex, Circle} from 'native-base';
 import {StyleSheet, Text} from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import AppLoading from 'expo-app-loading';
 import {useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
-import { Feather, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+import {AntDesign } from '@expo/vector-icons';
 
-function HomeScreen() {
+function RewardsHomeScreen() {
 
   let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
   if(!fontsLoaded){
@@ -20,7 +18,7 @@ function HomeScreen() {
 
   return (
     <View style={styles.container}>
-
+        <ScrollView>
         <VStack space={4} alignItems='center' w='94%' h='99%'>
             <Flex direction='row' flexWrap='wrap'>
                 <RewardCard itemName='$25 cvs gift card' price='2,000'/>
@@ -35,8 +33,9 @@ function HomeScreen() {
             <LeaderBoardCard name='miss girl' score='2,000' place='2nd'/>
             <LeaderBoardCard name='girlie ya' score='500' place='3rd'/>
         </VStack>
-
+      </ScrollView>
     </View>
+
   );
 }
 
@@ -109,25 +108,12 @@ export default function RewardsPage(){
   return (
     <NavigationContainer independent='true'>
       <Tab.Navigator>
-        <Tab.Screen name="Rewards" component={HomeScreen} />
+        <Tab.Screen name="Rewards" component={RewardsHomeScreen} />
         <Tab.Screen name="My Rewards" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
-
-
-
-// const Example = () => {
-//   return <View style={styles.buttonGroupContainer} paddingTop='5'>
-//     <View style={styles.buttonContainer}>
-//       <Button style={styles.rewardNavigatorButton}><Text style={styles.text}> testing </Text></Button>
-//     </View>
-//     <View style={styles.buttonContainer}>
-//       <Button style={styles.rewardNavigatorButton} title='Button 2'/>
-//     </View>
-//   </View>
-// };
 
 const styles = StyleSheet.create({
   container: {

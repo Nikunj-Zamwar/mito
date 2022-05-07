@@ -1,4 +1,5 @@
 import MainHomeScreen from './classes/homeScreen.js';
+import RewardsPage from "./classes/RewardsPage";
 import { NativeBaseProvider} from "native-base";
 import {NavigationContainer} from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -18,6 +19,11 @@ export default function App() {
                     <MaterialCommunityIcons name="home-variant" color={color} size={26} />
                   ),
                 }}/>
+            <Tab.Screen name="Rewards" component={RewardsPage} options={{
+                tabBarIcon: ({ color }) => (
+                    <MaterialCommunityIcons name="cash" color={color} size={26} />
+                ),
+            }}/>
         </Tab.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

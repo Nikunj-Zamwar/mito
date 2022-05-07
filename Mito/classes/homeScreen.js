@@ -1,12 +1,11 @@
 import React from 'react';
-import {View, Box, VStack, Text, Flex, Center, Circle, Icon, Link, NativeBaseProvider} from "native-base"
+import {View, Box, VStack, Text, Flex, Center, Circle, Icon, Link} from "native-base"
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import {ScrollView} from 'react-native';
 import {createNativeStackNavigator } from '@react-navigation/native-stack';
-import {NavigationContainer} from "@react-navigation/native";
 import {doc, onSnapshot} from 'firebase/firestore'
 import {db} from "../firebase.js";
 import {useState, useEffect} from 'react';
@@ -18,7 +17,7 @@ const MainStack = createNativeStackNavigator();
 export default function MainHomeScreen(){
     return (
         <MainStack.Navigator>
-            <MainStack.Screen name = "Home" options={{ headerShown: false }} component={HomeScreen} />
+            <MainStack.Screen name = "MainHome" options={{ headerShown: false }} component={HomeScreen} />
             <MainStack.Screen name = "Meeting Agenda" component = {MeetingAgenda} />
             <MainStack.Screen name = "Checklist" component = {CheckBoxTest} />
         </MainStack.Navigator>
