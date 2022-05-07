@@ -11,7 +11,7 @@ import {doc, onSnapshot} from 'firebase/firestore'
 import {db} from "../firebase.js";
 import {useState, useEffect} from 'react';
 import MeetingAgenda from './MeetingAgenda.js';
-import CheckBoxTest from './testListDisplay.js';
+import {CheckBoxTest} from "./testListDisplay";
 
 const MainStack = createNativeStackNavigator();
 
