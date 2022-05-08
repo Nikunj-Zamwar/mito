@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { NativeBaseProvider, Checkbox, View, Divider, Slider, TextArea, VStack, Box, Flex, Center } from "native-base"
-import {NavigationContainer} from "@react-navigation/native";
+import React  from 'react';
+import {View, Divider, Slider, TextArea, VStack, Flex, Center } from "native-base"
 import {StyleSheet, Text} from "react-native";
 
 export default function MeetingAgendaClass(){
