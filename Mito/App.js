@@ -10,6 +10,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
+    /* Temporary Comment out so I can see Profile Screen. Delete before merging.
   return (
     <NativeBaseProvider>
       <NavigationContainer>
