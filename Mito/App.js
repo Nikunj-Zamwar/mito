@@ -4,13 +4,11 @@ import { NativeBaseProvider} from "native-base";
 import {NavigationContainer} from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-//import MainHomeScreen from './classes/homeScreen.js';
-//const MainStack = createNativeStackNavigator();
+import ProfileScreen from "./classes/profileScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
-    /* Temporary Comment out so I can see Profile Screen. Delete before merging.
   return (
     <NativeBaseProvider>
       <NavigationContainer>
@@ -23,6 +21,11 @@ export default function App() {
             <Tab.Screen name="Rewards" component={RewardsPage} options={{
                 tabBarIcon: ({ color }) => (
                     <MaterialCommunityIcons name="cash" color={color} size={26} />
+                ),
+            }}/>
+            <Tab.Screen name="Profile" component={ProfileScreen} options={{
+                tabBarIcon: ({ color }) => (
+                    <MaterialCommunityIcons name="account" color={color} size={26} />
                 ),
             }}/>
         </Tab.Navigator>
