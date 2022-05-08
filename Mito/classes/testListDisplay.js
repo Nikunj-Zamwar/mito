@@ -4,11 +4,10 @@ import {Checkbox, View } from "native-base"
 export function CheckBoxTest(){
   return (
       <View>
-          <Checkbox value="two">Explain the current dilemmas</Checkbox>
-          <Checkbox value="two">Show current set up update</Checkbox>
-          <Checkbox value="two">Github setup invites</Checkbox>
-          <Checkbox value="two">Current blockers</Checkbox>
-          <Checkbox value="two">Missed meetings</Checkbox>
+          <Checkbox value="two">Ask 3 Questions</Checkbox>
+          <Checkbox value="two">Be Awesome</Checkbox>
+          <Checkbox value="two">Be EXTRA Awesome</Checkbox>
+          <Checkbox value="two">add more playlists</Checkbox>
       </View>
   );
 }

@@ -19,7 +19,7 @@ export default function MainHomeScreen(){
         <MainStack.Navigator>
             <MainStack.Screen name = "MainHome" options={{ headerShown: false }} component={HomeScreen} />
             <MainStack.Screen name = "Meeting Agenda" component = {MeetingAgenda} />
-            <MainStack.Screen name = "Checklist" component = {CheckBoxTest} />
+            <MainStack.Screen name = "Stand Up Update" component = {CheckBoxTest} />
         </MainStack.Navigator>
       );
 }
@@ -34,7 +34,7 @@ function HomeScreen(props){
         <ScrollView>
         <View pt = "50px">
         <VStack space={8} alignItems="center">
-            <Link onPress={() => props.navigation.navigate('Checklist')} mt = '8'>
+            <Link onPress={() => props.navigation.navigate('Stand Up Update')} mt = '8'>
                 <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD" type="checklist">
                     <Title color = "#787874" text = "work"/>
                     <Header size = "20px" color = "#656363" text = "stand up update"/>

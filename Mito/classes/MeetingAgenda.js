@@ -7,13 +7,11 @@ import {StyleSheet, Text} from "react-native";
 export default function MeetingAgendaClass(){
   return (
       <View style={styles.container}>
-        <VStack space ={2} alignItems="center"> 
-            <Text style={styles.textStyle} fontSize="6xl">Description Description Description Description Description Description Description Description Description
-            Description Description DescriptionDescription Description DescriptionDescription Description Description
-            Description Description DescriptionDescription Description DescriptionDescription Description Description</Text>
+        <VStack space ={2} alignItems="center"  paddingY = "20px">
+            <Text style={styles.textStyle} fontSize="6xl">Here is a sample meeting agenda. Everything here is customizable! Below are some details about the meeting.</Text>
         </VStack>
-        <Text style={styles.textStyle} fontSize="xs">Lets get started</Text>
-        <Slider w="3/4" maxW="300" defaultValue={70} minValue={0} maxValue={100} accessibilityLabel="hello world" step={10}>
+        <Text style={styles.textStyle} fontSize="xs">Meeting Progress Bar</Text>
+        <Slider w="3/4" maxW="300" defaultValue={25} minValue={0} maxValue={100} accessibilityLabel="hello world" step={10}>
             <Slider.Track>
                 <Slider.FilledTrack />
                 </Slider.Track>
@@ -21,7 +19,7 @@ export default function MeetingAgendaClass(){
         </Slider>
         <Divider my="2" />
         <Flex h={40} alignItems="center">  
-            <Flex direction='row' alignItems={'center'}>
+            <Flex direction='row' alignItems={'center'} pt = "10px">
                 <Center size={6} style={{ borderColor: '#94BDB8', borderStyle: 'solid', borderWidth: 1,p: 4,}} rounded="xl" _text={{color: "black",fontWeight: "medium"}}>
                         1
                 </Center>
