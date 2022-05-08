@@ -21,8 +21,8 @@ export default function ProfileScreen(){
 
     return(
         <ScrollView>
-        <View alignItems = "center">
-            <Flex borderWidth={1} alignItems ="center">
+        <View alignItems = "center" bottom ={windowHeight - 450}>
+            <Flex alignItems ="center">
                 <Circle size ={windowWidth * 1.2}  bg="#A0D6BB">
                     <VStack pt = {windowHeight / 3.2} alignItems = "center">
                         <Text fontSize = "40px" fontFamily = "BalooBhaijaan2_600SemiBold" color = "white">ashley rivera</Text>
@@ -32,10 +32,10 @@ export default function ProfileScreen(){
                         </Flex>
                     </VStack>
                 </Circle>
-                <Flex alignContent ="flex-end" height = "50%">
-                    <Image resizeMode = "contain" source={tempProfileImage} alt ="Profile Picture"/>
+                <Flex width = "60%" bottom={240}>
+                    <Image resizeMode = "center" source={tempProfileImage} alt ="Profile Picture"/>
                     <Flex direction="row">
-                        <Text fontSize = "20px" fontFamily = "Inter_400Regular" color = "#94BDB8">50 needed to grow!</Text>
+                        <Text margin = "auto" fontSize = "20px" fontFamily = "Inter_400Regular" color = "#94BDB8" bottom = "200px">50 needed to grow!</Text>
                     </Flex>
                 </Flex>
             </Flex>
