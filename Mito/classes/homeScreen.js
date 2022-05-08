@@ -1,17 +1,30 @@
 import React from 'react';
-import {View, Box, VStack, Text, Flex, Center, Circle, Icon} from "native-base"
+import {View, Box, VStack, Text, Flex, Center, Circle, Icon, Link} from "native-base"
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold} from '@expo-google-fonts/baloo-bhaijaan-2';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import {ScrollView} from 'react-native';
-
+import {createNativeStackNavigator } from '@react-navigation/native-stack';
 import {doc, onSnapshot} from 'firebase/firestore'
 import {db} from "../firebase.js";
-
 import {useState, useEffect} from 'react';
+import MeetingAgenda from './MeetingAgenda.js';
+import {CheckBoxTest} from "./testListDisplay";
 
-export default function HomeScreen(){
+const MainStack = createNativeStackNavigator();
+
+export default function MainHomeScreen(){
+    return (
+        <MainStack.Navigator>
+            <MainStack.Screen name = "MainHome" options={{ headerShown: false }} component={HomeScreen} />
+            <MainStack.Screen name = "Meeting Agenda" component = {MeetingAgenda} />
+            <MainStack.Screen name = "Stand Up Update" component = {CheckBoxTest} />
+        </MainStack.Navigator>
+      );
+}
+
+function HomeScreen(props){
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold});
     if(!fontsLoaded){
         return <AppLoading />
@@ -21,17 +34,21 @@ export default function HomeScreen(){
         <ScrollView>
         <View pt = "50px">
         <VStack space={8} alignItems="center">
-            <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD" type="checklist">
-                <Title color = "#787874" text = "work"/>
-                <Header size = "20px" color = "#656363" text = "stand up update"/>
-                <Icon as ={MaterialCommunityIcons} name="clipboard-text-outline" size={21} color = "#787874"/>
-            </Card>
+            <Link onPress={() => props.navigation.navigate('Stand Up Update')} mt = '8'>
+                <Card color="#C4DF9D" borderColor = "#A3C1AD" dividerColor ="#C4C9BD" type="checklist">
+                    <Title color = "#787874" text = "work"/>
+                    <Header size = "20px" color = "#656363" text = "stand up update"/>
+                    <Icon as ={MaterialCommunityIcons} name="clipboard-text-outline" size={21} color = "#787874"/>
+                </Card>
+            </Link>
             {/*Agenda for Active Meeting*/}
-            <Card color="#94BDB8" borderColor = "#94BDB8" dividerColor = "#C4C9BD" type="agenda">
-                <Title color = "#FFFFFF" text = "work"/>
-                <Header size = "18px" color = "#FFFFFF" text = "meeting agenda"/>
-                <Icon as ={MaterialCommunityIcons} name="clipboard-text-outline" size={21} color = "#FFFFFF"/>
-            </Card>
+            <Link onPress={() => props.navigation.navigate('Meeting Agenda')} mt = '8'>
+                <Card color="#94BDB8" borderColor = "#94BDB8" dividerColor = "#C4C9BD" type="agenda">
+                    <Title color = "#FFFFFF" text = "work"/>
+                    <Header size = "18px" color = "#FFFFFF" text = "meeting agenda"/>
+                    <Icon as ={MaterialCommunityIcons} name="clipboard-text-outline" size={21} color = "#FFFFFF"/>
+                </Card>
+            </Link>
         </VStack>
         </View>
         </ScrollView>
@@ -70,6 +87,16 @@ function MeetingCheckbox(){
     const [data, setData] = useState();
     //Firestore
     useEffect(() => {
+        /*
+        const getListItems = async () => {
+            const checklistRef = doc(db, "premadeChecklists", id);
+            const checkListSnap = await getDoc(checklistRef);
+            if(checkListSnap.exists()){
+                setData(checkListSnap.data());
+            }
+        }
+        getListItems().then();
+         */
         const unSub = onSnapshot(doc(db, "premadeChecklists", id), (doc) => {
             setData(doc.data());
         });
