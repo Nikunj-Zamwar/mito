@@ -7,8 +7,9 @@ import {BalooBhaijaan2_600SemiBold, BalooBhaijaan2_500Medium} from '@expo-google
 import {ScrollView, Dimensions} from 'react-native';
 import {doc, onSnapshot} from 'firebase/firestore'
 import {db} from "../firebase.js";
-
 import {useState, useEffect} from 'react';
+
+const tempProfileImage = require("../assets/tempProfile.png");
 
 export default function ProfileScreen(){
     let [fontsLoaded] = useFonts({Inter_400Regular, BalooBhaijaan2_600SemiBold, BalooBhaijaan2_500Medium});
@@ -31,7 +32,7 @@ export default function ProfileScreen(){
                     </Flex>
                 </VStack>
             </Circle>
-            <Image source = {require('../assets/PlantGrowth1.png')}></Image>
+            {/*<Image size = "xl" source={tempProfileImage} alt ="Profile Picture"/>*/}
         </View>
         </ScrollView>
     );
