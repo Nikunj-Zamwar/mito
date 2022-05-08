@@ -32,7 +32,7 @@ export default function ProfileScreen(){
                         </Flex>
                     </VStack>
                 </Circle>
-                <Flex borderWidth = {1} alignContent ="flex-end" height = "50%">
+                <Flex alignContent ="flex-end" height = "50%">
                     <Image resizeMode = "contain" source={tempProfileImage} alt ="Profile Picture"/>
                     <Flex direction="row">
                         <Text fontSize = "20px" fontFamily = "Inter_400Regular" color = "#94BDB8">50 needed to grow!</Text>
