@@ -18,7 +18,6 @@ export default function ProfileScreen(){
     const windowHeight = Dimensions.get('window').height;
 
     return(
-        <ScrollView>
         <View alignItems = "center" bottom ={windowHeight - 450}>
             <Flex alignItems ="center">
                 <Circle size ={windowWidth * 1.2}  bg="#A0D6BB">
@@ -40,6 +39,5 @@ export default function ProfileScreen(){
                 </Flex>
             </Flex>
         </View>
-        </ScrollView>
     );
 }
