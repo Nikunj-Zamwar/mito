@@ -1,6 +1,5 @@
 import React from 'react';
-import {Image} from 'react-native'
-import {View, VStack, Text, Flex, Circle} from "native-base"
+import {Image, View, VStack, Text, Flex, Circle} from "native-base"
 import { useFonts, Inter_400Regular} from '@expo-google-fonts/inter';
 import AppLoading from 'expo-app-loading';
 import {BalooBhaijaan2_600SemiBold, BalooBhaijaan2_500Medium} from '@expo-google-fonts/baloo-bhaijaan-2';
@@ -21,9 +20,8 @@ export default function ProfileScreen(){
     const windowHeight = Dimensions.get('window').height;
 
     return(
-        <ScrollView>
-        <View alignItems = "center">
-            <Circle size ={windowWidth * 1.2} bottom = {windowHeight - 450} bg="#A0D6BB">
+        <View alignItems = "center" borderWidth = "1px" bottom = {windowHeight - 450}>
+            <Circle size ={windowWidth * 1.2}  bg="#A0D6BB">
                 <VStack pt = {windowHeight / 3.2} alignItems = "center">
                     <Text fontSize = "40px" fontFamily = "BalooBhaijaan2_600SemiBold" color = "white">ashley rivera</Text>
                     <Text fontSize = "32px" fontFamily = "BalooBhaijaan2_500Medium" color = "white">growth level: 2</Text>
@@ -32,8 +30,9 @@ export default function ProfileScreen(){
                     </Flex>
                 </VStack>
             </Circle>
-            {/*<Image size = "xl" source={tempProfileImage} alt ="Profile Picture"/>*/}
+            <Flex width = "50%">
+                <Image bottom = "59px" resizeMode = "contain" source={tempProfileImage} alt ="Profile Picture"/>
+            </Flex>
         </View>
-        </ScrollView>
     );
 }
